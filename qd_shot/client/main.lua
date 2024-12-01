@@ -36,8 +36,7 @@ function applyHurtEffect(type)
     end
 end
 
-RegisterNetEvent('tor_moonshiners:hurtEffect')
-AddEventHandler('tor_moonshiners:hurtEffect', applyHurtEffect)
+
 
 -- Damage monitoring and reaction
 Citizen.CreateThread(function()
@@ -50,7 +49,6 @@ Citizen.CreateThread(function()
             for _, armBone in pairs(Config.arm or {}) do
                 if boneId == armBone then
                     if math.random(1, 50) > 30 then
-                        TriggerEvent("tor_moonshiners:hurtEffect", "arm")
                         SetCurrentPedWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), true)
                         Citizen.InvokeNative(0x89F5E7ADECCCB49C, playerPed, "injured_right_arm")
                         Citizen.InvokeNative(0x46DF918788CB093F, playerPed, "PD_Animal_attack_blood_body_upper_left", true, true)
